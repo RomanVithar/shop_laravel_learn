@@ -14,8 +14,10 @@ class CreateBasketsProductsModelsTable extends Migration
     public function up()
     {
         Schema::create('baskets_products', function (Blueprint $table) {
+            $table->primary(['id_basket', 'id_product']);
             $table->foreignId('id_basket')->constrained('users')->onupdate('cascade');
             $table->foreignId('id_product')->constrained('products')->onupdate('cascade');
+            $table->integer('count');
         });
     }
 

@@ -14,8 +14,10 @@ class CreateProductsDealsModelsTable extends Migration
     public function up()
     {
         Schema::create('products_deals', function (Blueprint $table) {
+            $table->primary(['id_deal', 'id_product']);
             $table->foreignId('id_deal')->constrained('deals')->onupdate('cascade');
             $table->foreignId('id_product')->constrained('products')->onupdate('cascade');
+            $table->integer('count');
         });
     }
 
