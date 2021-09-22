@@ -23,8 +23,8 @@ class ProductsDealsFactory extends Factory
     public function definition()
     {
         return [
-            'id_deal' => $this->faker->numberBetween(1, 10),
-            'id_product' => $this->faker->numberBetween(1,10),
+            'deal_id' => $this->faker->numberBetween(1, 10),
+            'product_id' => $this->faker->numberBetween(1,10),
             'count' =>  $this->faker->randomDigit()
         ];
     }

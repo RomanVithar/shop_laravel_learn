@@ -23,7 +23,7 @@ class DealFactory extends Factory
     public function definition()
     {
         return [
-            'id_user' => $this->faker->numberBetween(1,10),
+            'user_id' => $this->faker->numberBetween(1,10),
             'cost_delivery' => $this->faker->numberBetween(1,100),
             'cost_type' => $this->faker->randomElement(['card', 'cash']),
             'status' => $this->faker->randomElement(['closed', 'open']),
