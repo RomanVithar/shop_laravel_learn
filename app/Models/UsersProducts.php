@@ -10,9 +10,13 @@ class UsersProducts extends Model
     public $timestamps = false;
     use HasFactory;
 
-    public function user()
+    public function user(): \illuminate\database\eloquent\relations\belongsto
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsto(User::class);
     }
 
+    public function product(): \illuminate\database\eloquent\relations\belongsto
+    {
+        return $this->belongsto(Product::class);
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Deal;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +32,6 @@ Route::get('product_editor/', function () {
 });
 
 Route::get('test/', function () {
-    $user = User::all()[3]; // получаю пользователя с id 4 чтобы получить 2 сущности из basket products 4, 2 и 4, 9
-    $bp = $user->basketsProducts;
-    dd($bp);
+    $productDeals = Deal::find(5)->productsDeals;
+    dd($productDeals);
 });
