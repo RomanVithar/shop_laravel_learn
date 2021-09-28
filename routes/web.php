@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Deal;
-use App\Models\User;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
 Route::get('/', function () {
     return view('home');
 });
 
 Route::get('shop/', function () {
-    return view('shop');
+    return view('shop', ['products' => Product::all()]);
 });
 
 Route::get('about/', function () {
@@ -31,7 +38,7 @@ Route::get('product_editor/', function () {
     return view('product_editor');
 });
 
-Route::get('test/', function () {
-    $productDeals = Deal::find(5)->productsDeals;
-    dd($productDeals);
+Route::get('product/{id}', function ($id) {
+    return view('product', ['product' => Product::find($id)]);
 });
+

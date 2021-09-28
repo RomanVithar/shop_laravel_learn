@@ -6,6 +6,9 @@ use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static find($id)
+ */
 class Product extends Model
 {
     public $timestamps = false;

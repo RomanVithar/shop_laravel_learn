@@ -7,9 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
 
-    <link href="/css/layout.css" rel="stylesheet" />
+    <link href="/css/layout.css" rel="stylesheet"/>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
+          integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
@@ -104,14 +105,20 @@
                 </li>
             </ul>
             <ul class="navbar-nav d-none d-lg-flex ml-2 order-3">
-                <li class="nav-item"><a class="nav-link" href="#">Sign in</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Sign up</a>
+                <li class="nav-item {{ request()->is('login') ? 'active' : null }}"><a class="nav-link"
+                                                                                         href="/login">Login</a>
+                </li>
+                <li class="nav-item {{ request()->is('register') ? 'active' : null }}"><a class="nav-link"
+                                                                                         href="/register">Register</a>
                 </li>
             </ul>
             <ul class="navbar-nav d-lg-none">
                 <li class="nav-item-divider"></li>
-                <li class="nav-item"><a class="nav-link" href="#">Sign in</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Sign up</a>
+                <li class="nav-item {{ request()->is('login') ? 'active' : null }}"><a class="nav-link"
+                                                                                         href="/login">Login</a>
+                </li>
+                <li class="nav-item {{ request()->is('register') ? 'active' : null }}"><a class="nav-link"
+                                                                                         href="/register">Register</a>
                 </li>
             </ul>
         </div>

@@ -23,11 +23,11 @@ class ProductFactory extends Factory
     {
         return [
             'cost' => $this->faker->randomDigit(),
-            'title' => $this->faker->randomAscii(),
+            'title' => $this->faker->company(),
             'weight' => $this->faker->randomDigit(),
-            'dimension' => '[]',
-            'image' => $this->faker->randomAscii(),
-            'description' => $this->faker->randomAscii()
+            'dimension' => '[5, 4, 8]',
+            'image' => $this->faker->imageUrl,
+            'description' => $this->faker->text()
         ];
     }
 }
