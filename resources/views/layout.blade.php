@@ -104,23 +104,39 @@
                     </a>
                 </li>
             </ul>
-            <ul class="navbar-nav d-none d-lg-flex ml-2 order-3">
-                <li class="nav-item {{ request()->is('login') ? 'active' : null }}"><a class="nav-link"
-                                                                                         href="/login">Login</a>
-                </li>
-                <li class="nav-item {{ request()->is('register') ? 'active' : null }}"><a class="nav-link"
-                                                                                         href="/register">Register</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav d-lg-none">
-                <li class="nav-item-divider"></li>
-                <li class="nav-item {{ request()->is('login') ? 'active' : null }}"><a class="nav-link"
-                                                                                         href="/login">Login</a>
-                </li>
-                <li class="nav-item {{ request()->is('register') ? 'active' : null }}"><a class="nav-link"
-                                                                                         href="/register">Register</a>
-                </li>
-            </ul>
+
+            @auth
+                <ul class="navbar-nav d-none d-lg-flex ml-2 order-3">
+                    <li class="nav-item {{ request()->is('login') ? 'active' : null }}">
+                        <a href="/basket" class="nav-link p-2"
+                           onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');"> корзина</a>
+                    </li>
+                    <li class="nav-item {{ request()->is('register') ? 'active' : null }}">
+                        <a class="nav-link p-2 {{ request()->is('shop') ? 'active' : null }}" href="/profile"
+                           onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">{{auth()->user()->name}}</a>
+                    </li>
+                </ul>
+
+            @endauth
+            @guest
+                <ul class="navbar-nav d-none d-lg-flex ml-2 order-3">
+                    <li class="nav-item {{ request()->is('login') ? 'active' : null }}"><a class="nav-link"
+                                                                                           href="/login">Login</a>
+                    </li>
+                    <li class="nav-item {{ request()->is('register') ? 'active' : null }}"><a class="nav-link"
+                                                                                              href="/register">Register</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav d-lg-none">
+                    <li class="nav-item-divider"></li>
+                    <li class="nav-item {{ request()->is('login') ? 'active' : null }}"><a class="nav-link"
+                                                                                           href="/login">Login</a>
+                    </li>
+                    <li class="nav-item {{ request()->is('register') ? 'active' : null }}"><a class="nav-link"
+                                                                                              href="/register">Register</a>
+                    </li>
+                </ul>
+            @endguest
         </div>
     </nav>
 </header>

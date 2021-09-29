@@ -25,7 +25,7 @@ class ProductsDealsFactory extends Factory
         return [
             'deal_id' => $this->faker->numberBetween(1, 10),
             'product_id' => $this->faker->numberBetween(1,10),
-            'count' =>  $this->faker->randomDigit()
+            'count' =>  $this->faker->numberBetween(1, 10)
         ];
     }
 }

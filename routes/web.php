@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BasketController;
 use App\Models\Deal;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -42,3 +43,8 @@ Route::get('product/{id}', function ($id) {
     return view('product', ['product' => Product::find($id)]);
 });
 
+Route::get('basket', [BasketController::class, 'show']);
+
+Route::get('profile/', function () {
+    return view('profile');
+});
