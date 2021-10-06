@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\DealController;
+use App\Http\Controllers\ShopController;
 use App\Models\Deal;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -21,15 +23,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('shop/', function () {
-    return view('shop', ['products' => Product::all()]);
-});
+Route::get('shop/', [ShopController::class, 'show']);
 
 Route::get('about/', function () {
     return view('about');
@@ -43,8 +43,28 @@ Route::get('product/{id}', function ($id) {
     return view('product', ['product' => Product::find($id)]);
 });
 
-Route::get('basket', [BasketController::class, 'show']);
+Route::get('basket/', [BasketController::class, 'show']);
+
+Route::get('add_product/', [BasketController::class, 'addProduct']);
+
+Route::get('rm_product/', [BasketController::class, 'rmProduct']);
+
+Route::get('create_deal/', [BasketController::class, 'createDeal']);
 
 Route::get('profile/', function () {
     return view('profile');
 });
+
+Route::get('open_deal/', [BasketController::class, 'openDeal']);
+
+Route::get('close_deal/', [DealController::class, 'close']);
+
+Route::get('acquiring/{id}', function ($id) {
+    return view('acquiring', ['deal' => Deal::find($id)]);
+});
+
+Route::get('paid/{id}', function ($id) {
+    return view('paid', ['deal' => Deal::find($id)]);
+});
+
+Route::get('incrementProduct/', [BasketController::class, 'incrementProduct']);

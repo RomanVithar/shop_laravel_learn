@@ -1,3 +1,19 @@
 .space {
     margin-bottom: 100px;
 }
+
+.btn-logout {
+    float: right;
+}
+
+.list-horizontal{
+    display:flex;
+    list-style:none;
+    margin: 7px;
+}
+
+.count-text {
+    font-size: 20px;
+    padding-left: 115px;
+    padding-right: 115px;
+}

@@ -27,6 +27,7 @@ class DealFactory extends Factory
             'cost_delivery' => $this->faker->numberBetween(1,100),
             'cost_type' => $this->faker->randomElement(['card', 'cash']),
             'status' => $this->faker->randomElement(['closed', 'open']),
+            'cost' => $this->faker->numberBetween(10, 100),
         ];
     }
 }

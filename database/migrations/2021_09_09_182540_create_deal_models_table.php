@@ -21,6 +21,7 @@ class CreateDealModelsTable extends Migration
             $table->integer('cost_delivery');
             $table->string('cost_type');
             $table->string('status');
+            $table->integer('cost');
             $table->timestamps();
         });
     }

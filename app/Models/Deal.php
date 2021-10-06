@@ -12,6 +12,14 @@ class Deal extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'cost_delivery',
+        'cost',
+        'cost_type',
+        'status',
+    ];
+
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);

@@ -5,9 +5,12 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>@yield('title')</title>
 
     <link href="/css/layout.css" rel="stylesheet"/>
+    <script src="/js/layout.js" defer></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
           integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -51,7 +54,8 @@
             <hr class="d-md-none text-white-50">
             <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
                 <li class="nav-item col-6 col-md-auto">
-                    <a class="nav-link p-2" href="#" target="_blank" rel="noopener">
+                    <a class="nav-link p-2" href="https://github.com/RomanVithar/shop_laravel_learn" target="_blank"
+                       rel="noopener">
                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
                              class="navbar-nav-svg d-inline-block align-text-top" viewBox="0 0 512 499.36" role="img">
                             <title>GitHub</title>
@@ -62,7 +66,7 @@
                     </a>
                 </li>
                 <li class="nav-item col-6 col-md-auto">
-                    <a class="nav-link p-2" href="#" target="_blank" rel="noopener">
+                    <a class="nav-link p-2" href="https://twitter.com/" target="_blank" rel="noopener">
                         <svg xmlns="" width="36" height="36" class="navbar-nav-svg d-inline-block align-text-top"
                              viewBox="0 0 512 416.32" role="img"><title>Twitter</title>
                             <path fill="currentColor"
@@ -72,7 +76,7 @@
                     </a>
                 </li>
                 <li class="nav-item col-6 col-md-auto">
-                    <a class="nav-link p-2" href="#" target="_blank" rel="noopener">
+                    <a class="nav-link p-2" href="https://www.instagram.com/?hl=ru" target="_blank" rel="noopener">
                         <svg width="36" height="36" class="navbar-nav-svg d-inline-block align-text-top"
                              viewBox="0 0 512 512" role="img"><title>Instagram</title>
                             <g>
@@ -91,7 +95,7 @@
                     </a>
                 </li>
                 <li class="nav-item col-6 col-md-auto">
-                    <a class="nav-link p-2" href="#" target="_blank" rel="noopener">
+                    <a class="nav-link p-2" href="https://opencollective.com/" target="_blank" rel="noopener">
                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
                              fill-rule="evenodd" class="navbar-nav-svg d-inline-block align-text-top"
                              viewBox="0 0 40 41" role="img"><title>Open Collective</title>
@@ -107,11 +111,11 @@
 
             @auth
                 <ul class="navbar-nav d-none d-lg-flex ml-2 order-3">
-                    <li class="nav-item {{ request()->is('login') ? 'active' : null }}">
+                    <li class="nav-item {{ request()->is('basket') ? 'active' : null }}">
                         <a href="/basket" class="nav-link p-2"
-                           onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');"> корзина</a>
+                           onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');"> Корзина</a>
                     </li>
-                    <li class="nav-item {{ request()->is('register') ? 'active' : null }}">
+                    <li class="nav-item {{ request()->is('profile') ? 'active' : null }}">
                         <a class="nav-link p-2 {{ request()->is('shop') ? 'active' : null }}" href="/profile"
                            onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">{{auth()->user()->name}}</a>
                     </li>
@@ -160,60 +164,60 @@
                     <path fill-rule="evenodd"
                           d="M2 7.846V7H1v.437c.291.207.632.35 1 .409zm-1 .737c.311.14.647.232 1 .271V15H1V8.583zm13 .271a3.354 3.354 0 0 0 1-.27V15h-1V8.854zm1-1.417c-.291.207-.632.35-1 .409V7h1v.437zM3 9.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5V15H7v-5H4v5H3V9.5zm6 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-4zm1 .5v3h2v-3h-2z"/>
                 </svg>
-                <span class="fs-5 text-white">Shop</span>
+                <span class="fs-5 text-white">Магазин</span>
             </a>
             <ul class="list-unstyled small text-muted">
-                <li class="mb-2">Designed and built with all the love in the world by the <a
-                        href="/docs/5.1/about/team/">Bootstrap team</a> with the help of <a
-                        href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.
+                <li class="mb-2">Разработано по проектированию баз данных. 04.10.21 <a
+                        href="https://github.com/RomanVithar/shop_laravel_learn">репозиторий проекта </a>сделано для
+                    того, чтобы выучить laravel <a
+                        href="#">и ещё ссылка</a>.
                 </li>
-                <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE"
-                                                  target="_blank" rel="license noopener">MIT</a>, docs <a
-                        href="https://creativecommons.org/licenses/by/3.0/" target="_blank"
+                <li class="mb-2">Лицензия <a href="#"
+                                             target="_blank" rel="license noopener">MIT</a>, документ <a
+                        href="#" target="_blank"
                         rel="license noopener">CC BY 3.0</a>.
                 </li>
-                <li class="mb-2">Currently v5.1.1.</li>
+                <li class="mb-2">Версия v1.0.0.</li>
             </ul>
         </div>
         <div class="col-6 col-lg-2 offset-lg-1 mb-3">
-            <h5>Links</h5>
+            <h5>Ссылки</h5>
             <ul class="list-unstyled ">
-                <li class="mb-2"><a href="/">Home</a></li>
-                <li class="mb-2"><a href="/docs/5.1/">Docs</a></li>
-                <li class="mb-2"><a href="/docs/5.1/examples/">Examples</a></li>
-                <li class="mb-2"><a href="https://themes.getbootstrap.com/">Themes</a></li>
-                <li class="mb-2"><a href="https://blog.getbootstrap.com/">Blog</a></li>
+                <li class="mb-2"><a href="/">Домашняя</a></li>
+                <li class="mb-2"><a href="/shop">Магазин</a></li>
+                <li class="mb-2"><a href="/about">О нас</a></li>
+                <li class="mb-2"><a href="#">Документация</a></li>
+                <li class="mb-2"><a href="#">Блог</a></li>
             </ul>
         </div>
         <div class="col-6 col-lg-2 mb-3">
-            <h5>Guides</h5>
+            <h5>Где нас найти</h5>
             <ul class="list-unstyled">
-                <li class="mb-2"><a href="/docs/5.1/getting-started/">Getting started</a></li>
-                <li class="mb-2"><a href="/docs/5.1/examples/starter-template/">Starter template</a></li>
-                <li class="mb-2"><a href="/docs/5.1/getting-started/webpack/">Webpack</a></li>
-                <li class="mb-2"><a href="/docs/5.1/getting-started/parcel/">Parcel</a></li>
+                <li class="mb-2"><a href="#">Инстаграм</a></li>
+                <li class="mb-2"><a href="#">Грппа в вк</a></li>
+                <li class="mb-2"><a href="#">Твиттер</a></li>
+                <li class="mb-2"><a href="#">Телеграм канал</a></li>
             </ul>
         </div>
         <div class="col-6 col-lg-2 mb-3">
-            <h5>Projects</h5>
+            <h5>Проекты</h5>
             <ul class="list-unstyled">
-                <li class="mb-2"><a href="https://github.com/twbs/bootstrap">Bootstrap 5</a></li>
-                <li class="mb-2"><a href="https://github.com/twbs/bootstrap/tree/v4-dev">Bootstrap 4</a></li>
-                <li class="mb-2"><a href="https://github.com/twbs/icons">Icons</a></li>
-                <li class="mb-2"><a href="https://github.com/twbs/rfs">RFS</a></li>
-                <li class="mb-2"><a href="https://github.com/twbs/bootstrap-npm-starter">npm starter</a></li>
+                <li class="mb-2"><a href="#">Английский</a></li>
+                <li class="mb-2"><a href="#">Практика</a></li>
+                <li class="mb-2"><a href="#">Связка ключей</a></li>
+                <li class="mb-2"><a href="#">Игра жизнь</a></li>
+                <li class="mb-2"><a href="#">Задания</a></li>
             </ul>
         </div>
         <div class="col-6 col-lg-2 mb-3">
-            <h5>Community</h5>
+            <h5>Сообщество</h5>
             <ul class="list-unstyled">
-                <li class="mb-2"><a href="https://github.com/twbs/bootstrap/issues">Issues</a></li>
-                <li class="mb-2"><a href="https://github.com/twbs/bootstrap/discussions">Discussions</a></li>
-                <li class="mb-2"><a href="https://github.com/sponsors/twbs">Corporate sponsors</a></li>
-                <li class="mb-2"><a href="https://opencollective.com/bootstrap">Open Collective</a></li>
-                <li class="mb-2"><a href="https://bootstrap-slack.herokuapp.com/">Slack</a></li>
-                <li class="mb-2"><a href="https://stackoverflow.com/questions/tagged/bootstrap-5">Stack
-                        Overflow</a></li>
+                <li class="mb-2"><a href="#">Киберфорум</a></li>
+                <li class="mb-2"><a href="#">Линукс форум</a></li>
+                <li class="mb-2"><a href="#">Форум в вк</a></li>
+                <li class="mb-2"><a href="#">Аудитория в ВГУ</a></li>
+                <li class="mb-2"><a href="#">ФКН</a></li>
+                <li class="mb-2"><a href="#">MIT</a></li>
             </ul>
         </div>
     </div>

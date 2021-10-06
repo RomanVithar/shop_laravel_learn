@@ -1,3 +1,10 @@
 .space {
     margin-bottom: 100px;
 }
+
+.btn-logout {
+    text-align: right;
+    background-color: crimson;
+    margin: 300px;
+    padding: 400px;
+}
