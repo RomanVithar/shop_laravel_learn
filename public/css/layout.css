@@ -17,3 +17,8 @@
     padding-left: 115px;
     padding-right: 115px;
 }
+
+.card-img-top {
+    height: 300px;
+    overflow: hidden;
+}

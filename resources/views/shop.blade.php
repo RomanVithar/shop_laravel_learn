@@ -1,5 +1,9 @@
 @extends('layout')
 
+@section('import')
+    <script src="/js/shop.js" defer></script>
+@endsection
+
 @section('title') Магазин @endsection
 
 @section('main_content')
@@ -58,7 +62,7 @@
             <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <jli class="page-item">
+            <li class="page-item">
                 <a class="page-link" href="#" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
@@ -66,10 +70,13 @@
         </ul>
     </nav>
 
-
-
     <script>
-
+        const images = document.querySelectorAll('img');
+        images.forEach((image) => {
+            image.onerror = function () {
+                image.src = "{{ asset('images/not_load.jpg') }}"
+            }
+        });
     </script>
 
 @endsection

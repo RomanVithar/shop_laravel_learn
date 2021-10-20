@@ -8,3 +8,12 @@
     margin: 300px;
     padding: 400px;
 }
+
+.card-img-top {
+    width: 27%; /* Ширина */
+    float: left; /* Выстраиваем элементы по горизонтали */
+    margin: 0 0 0 3.5%; /* Отступ слева */
+    background: #f0f0f0; /* Цвет фона */
+    border-radius: 5px; /* Радиус скругления */
+    padding: 2%; /* Поля */
+}

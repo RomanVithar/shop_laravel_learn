@@ -6,7 +6,7 @@ use App\Http\Controllers\ShopController;
 use App\Models\Deal;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +36,18 @@ Route::get('about/', function () {
 });
 
 Route::get('product_editor/', function () {
+    return view('product_editor');
+});
+
+Route::get('create_product/', function (Request $request) {
+    Product::create([
+        'cost' => $request->input('cost'),
+        'title' => $request->input('title'),
+        'weight' => $request->input('weight'),
+        'dimension' => $request->input('dimension'),
+        'description' => $request->input('description'),
+        'image' => $request->input('image')
+    ]);
     return view('product_editor');
 });
 

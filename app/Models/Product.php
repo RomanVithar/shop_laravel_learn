@@ -14,6 +14,20 @@ class Product extends Model
     public $timestamps = false;
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'cost',
+        'title',
+        'weight',
+        'dimension',
+        'description',
+        'image'
+    ];
+
     public function usersProducts(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(UsersProducts::class);
