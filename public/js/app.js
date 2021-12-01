@@ -4024,8 +4024,6 @@ __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
 __webpack_require__(/*! ./layout */ "./resources/js/layout.js");
 
-__webpack_require__(/*! ./shop */ "./resources/js/shop.js");
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -4127,7 +4125,6 @@ function handleCloseDeal(deal_id) {
   response.then(function (res) {
     return res.json();
   }).then(function (payload) {
-    console.log(payload.deal_id);
     window.location.replace('http://localhost:8000/paid/' + payload.deal_id);
   });
 }
@@ -4221,23 +4218,6 @@ closeDealListener();
 clickRadioListener();
 plusProductListener();
 minusProductListener();
-
-/***/ }),
-
-/***/ "./resources/js/shop.js":
-/*!******************************!*\
-  !*** ./resources/js/shop.js ***!
-  \******************************/
-/***/ (() => {
-
-function handleImages() {
-  var images = document.querySelectorAll('img');
-  images.forEach(function (image) {
-    image.onerror = function () {
-      image.src = "{{ asset('images/not_load.jpg') }}";
-    };
-  });
-}
 
 /***/ }),
 

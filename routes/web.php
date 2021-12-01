@@ -57,8 +57,9 @@ Route::get('product/{id}', function ($id) {
 
 Route::get('basket/', [BasketController::class, 'show']);
 
-Route::get('add_product/', [BasketController::class, 'addProduct']);
-
+Route::group(['middleware' => 'web'], function () {
+    Route::get('add_product/', [BasketController::class, 'addProduct']);
+});
 Route::get('rm_product/', [BasketController::class, 'rmProduct']);
 
 Route::get('create_deal/', [BasketController::class, 'createDeal']);

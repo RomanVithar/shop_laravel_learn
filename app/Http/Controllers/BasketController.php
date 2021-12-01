@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\UsersProducts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use function Psy\sh;
 
 class BasketController extends Controller
@@ -34,17 +35,26 @@ class BasketController extends Controller
     /**
      * Добавляет продукт в корзину для текущего пользователя
      *
-     * @return \Illuminate\View\View
      */
-    public function addProduct(Request $request): \Illuminate\View\View
+    public function addProduct(Request $request)
     {
         $product_id = $request->input('product_id');
+        error_log("fffffffffffffffffffffffffff");
+        error_log($request->user());
+        if (Auth::check()) {
+            /**
+             * После проверки уже можешь получать любое свойство модели
+             * пользователя через фасад Auth, например id
+             */
+            $user = Auth::user()->id;
+        }
+//        return ["id" => Auth::id()];
+//        error_log();
         UsersProducts::create([
-            'user_id' => auth()->user()->id,
+            'user_id' => 3295204,
             'product_id' => $product_id,
             'count' => 1
         ]);
-        return (new ShopController)->show();
     }
 
     /**

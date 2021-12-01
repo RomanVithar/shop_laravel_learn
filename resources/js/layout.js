@@ -59,7 +59,6 @@ function handleCloseDeal(deal_id) {
     });
     const response = fetch('http://localhost:8000/close_deal?' + params.toString());
     response.then((res) => res.json()).then((payload) => {
-        console.log(payload.deal_id);
         window.location.replace('http://localhost:8000/paid/' + payload.deal_id);
     });
 }
