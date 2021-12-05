@@ -23,8 +23,13 @@
             </div>
         @endforeach
     </div>
+    <form action="empty_basket/" method="GET">
+        @csrf
+        <button type="submit" class="btn btn-dark btn-primary btn-lg btn-block delete-all">Удалить всё</button>
+    </form>
     <br>
-    <h3>Итоговая стоимость: <i class="total-cost">{{$total_price}}</i> ₽</h3>
+    <br>
+    <h3>Итоговая стоимость: <i class="total-cost">{{$total_price ?? ''}}</i> ₽</h3>
     <a href="create_deal/" class="btn btn-info col-sm-12">Купить</a>
     <br>
     <br>

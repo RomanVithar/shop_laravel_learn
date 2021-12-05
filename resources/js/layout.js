@@ -85,59 +85,9 @@ function handleClickRadio(el) {
     el.setAttribute('checked', true)
 }
 
-function plusProductListener() {
-    const buttons = document.querySelectorAll('button.plus-product');
-    buttons.forEach((button) => {
-        button.addEventListener('click', (evt) => {
-            const id = evt.target.dataset.id;
-            handlePlusProduct(id);
-        });
-    });
-}
 
-function minusProductListener() {
-    const buttons = document.querySelectorAll('button.minus-product');
-    buttons.forEach((button) => {
-        button.addEventListener('click', (evt) => {
-            const id = evt.target.dataset.id;
-            handleMinusProduct(id);
-        });
-    });
-}
-
-function handlePlusProduct(product_id) {
-    const params = new URLSearchParams({
-        'product_id': product_id,
-        'number': 1
-    });
-    const number = document.querySelector('p.count-product-' + product_id);
-    const response = fetch('http://localhost:8000/incrementProduct?' + params.toString());
-    response.then((res) => res.json()).then((payload) => {
-        number.innerHTML = parseInt(number.innerHTML) + 1;
-    });
-}
-
-function handleMinusProduct(product_id) {
-    const params = new URLSearchParams({
-        'product_id': product_id,
-        'number': -1
-    });
-    const number = document.querySelector('p.count-product-' + product_id);
-    if (parseInt(number.innerHTML) - 1 < 0) {
-        return;
-    }
-    const response = fetch('http://localhost:8000/incrementProduct?' + params.toString());
-    response.then((res) => res.json()).then((payload) => {
-        number.innerHTML = parseInt(number.innerHTML) - 1;
-        if (parseInt(number.innerHTML) === 0) {
-            window.location.replace('http://localhost:8000/shop');
-        }
-    });
-}
 
 removeProductListener();
 openDealListener();
 closeDealListener();
 clickRadioListener();
-plusProductListener();
-minusProductListener();

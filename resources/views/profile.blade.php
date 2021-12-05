@@ -8,6 +8,59 @@
         <button type="submit" class="btn btn-dark btn-logout">выйти</button>
     </form>
     <br>
+    @if(auth()->user()->email == 'admin@admin.admin')
+        <h2>Пользователи</h2>
+        <table>
+            <tbody>
+            <tr>
+                <th>id</th>
+                <th>почта</th>
+                <th>имя</th>
+            </tr>
+            @foreach($users as $user)
+            <tr>
+                <td>{{$user->id}}</td>
+                <td>{{$user->email}}</td>
+                <td>{{$user->name}}</td>
+            </tr>
+            @endforeach
+            </tbody>
+        </table>
+        <h2>Товары</h2>
+        <table>
+            <tbody>
+            <tr>
+                <th>id</th>
+                <th>Название</th>
+                <th>Стоимость</th>
+            </tr>
+            @foreach($products as $product)
+                <tr>
+                    <td>{{$product->id}}</td>
+                    <td>{{$product->title}}</td>
+                    <td>{{$product->cost}}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+        <h2>Сделки</h2>
+        <table>
+            <tbody>
+            <tr>
+                <th>id </th>
+                <th>id пользователя_</th>
+                <th>статус</th>
+            </tr>
+            @foreach($deals as $deal)
+                <tr>
+                    <td>{{$deal->id}}</td>
+                    <td>{{$deal->user_id}}</td>
+                    <td>{{$deal->status}}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    @endif
     <br>
     <ul class="list-group list-group-flush">
         <li class="list-group-item list-group-item-primary">

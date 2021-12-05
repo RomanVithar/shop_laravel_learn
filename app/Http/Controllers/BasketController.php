@@ -3,18 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deal;
-use App\Models\Product;
-use App\Models\User;
 use App\Models\UsersProducts;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use function Psy\sh;
 
 class BasketController extends Controller
 {
     private function calculate_total_price()
     {
         $total_price = 0;
+
         foreach (\request()->user()->usersProducts as $usersProduct) {
             $total_price += $usersProduct->Product->cost * $usersProduct->count;
         }
@@ -35,26 +32,18 @@ class BasketController extends Controller
     /**
      * Добавляет продукт в корзину для текущего пользователя
      *
+     * @return string[]
      */
-    public function addProduct(Request $request)
+    public function addProduct(Request $request): array
     {
         $product_id = $request->input('product_id');
-        error_log("fffffffffffffffffffffffffff");
-        error_log($request->user());
-        if (Auth::check()) {
-            /**
-             * После проверки уже можешь получать любое свойство модели
-             * пользователя через фасад Auth, например id
-             */
-            $user = Auth::user()->id;
-        }
-//        return ["id" => Auth::id()];
-//        error_log();
+        error_log(auth()->user()->id);
         UsersProducts::create([
-            'user_id' => 3295204,
+            'user_id' => auth()->user()->id,
             'product_id' => $product_id,
             'count' => 1
         ]);
+        return ['ok'];
     }
 
     /**
@@ -118,5 +107,4 @@ class BasketController extends Controller
             ->where('product_id', $request->product_id)->update(['count' => $userProduct->count + $request->number]);
         return ['ok'];
     }
-
 }

@@ -4155,69 +4155,10 @@ function handleClickRadio(el) {
   el.setAttribute('checked', true);
 }
 
-function plusProductListener() {
-  var buttons = document.querySelectorAll('button.plus-product');
-  buttons.forEach(function (button) {
-    button.addEventListener('click', function (evt) {
-      var id = evt.target.dataset.id;
-      handlePlusProduct(id);
-    });
-  });
-}
-
-function minusProductListener() {
-  var buttons = document.querySelectorAll('button.minus-product');
-  buttons.forEach(function (button) {
-    button.addEventListener('click', function (evt) {
-      var id = evt.target.dataset.id;
-      handleMinusProduct(id);
-    });
-  });
-}
-
-function handlePlusProduct(product_id) {
-  var params = new URLSearchParams({
-    'product_id': product_id,
-    'number': 1
-  });
-  var number = document.querySelector('p.count-product-' + product_id);
-  var response = fetch('http://localhost:8000/incrementProduct?' + params.toString());
-  response.then(function (res) {
-    return res.json();
-  }).then(function (payload) {
-    number.innerHTML = parseInt(number.innerHTML) + 1;
-  });
-}
-
-function handleMinusProduct(product_id) {
-  var params = new URLSearchParams({
-    'product_id': product_id,
-    'number': -1
-  });
-  var number = document.querySelector('p.count-product-' + product_id);
-
-  if (parseInt(number.innerHTML) - 1 < 0) {
-    return;
-  }
-
-  var response = fetch('http://localhost:8000/incrementProduct?' + params.toString());
-  response.then(function (res) {
-    return res.json();
-  }).then(function (payload) {
-    number.innerHTML = parseInt(number.innerHTML) - 1;
-
-    if (parseInt(number.innerHTML) === 0) {
-      window.location.replace('http://localhost:8000/shop');
-    }
-  });
-}
-
 removeProductListener();
 openDealListener();
 closeDealListener();
 clickRadioListener();
-plusProductListener();
-minusProductListener();
 
 /***/ }),
 

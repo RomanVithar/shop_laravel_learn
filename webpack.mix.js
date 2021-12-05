@@ -18,3 +18,4 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
 ]);
 
 mix.js('resources/js/shop.js', 'public/js');
+mix.js('resources/js/basket.js', 'public/js');

@@ -5,6 +5,9 @@ use App\Http\Controllers\DealController;
 use App\Http\Controllers\ShopController;
 use App\Models\Deal;
 use App\Models\Product;
+use App\Models\User;
+use App\Models\UsersProducts;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 /*
@@ -57,14 +60,19 @@ Route::get('product/{id}', function ($id) {
 
 Route::get('basket/', [BasketController::class, 'show']);
 
-Route::group(['middleware' => 'web'], function () {
-    Route::get('add_product/', [BasketController::class, 'addProduct']);
-});
+Route::get('add_product/', [BasketController::class, 'addProduct']);
+
 Route::get('rm_product/', [BasketController::class, 'rmProduct']);
 
 Route::get('create_deal/', [BasketController::class, 'createDeal']);
 
 Route::get('profile/', function () {
+    if(\auth()->user()->email == 'admin@admin.admin'){
+        $users = User::all();
+        $deals = Deal::all();
+        $products = Product::all();
+        return view('profile', ['users'=>$users, 'deals'=>$deals, 'products'=>$products]);
+    }
     return view('profile');
 });
 
@@ -81,3 +89,10 @@ Route::get('paid/{id}', function ($id) {
 });
 
 Route::get('incrementProduct/', [BasketController::class, 'incrementProduct']);
+
+Route::get('empty_basket/', function (){
+    UsersProducts::where('user_id', auth()->user()->id)->delete();
+    return view('basket', [BasketController::class, 'show']);
+});
+
+Route::get('seek_product/', [ShopController::class, 'seek']);

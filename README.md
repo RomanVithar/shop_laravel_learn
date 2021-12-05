@@ -62,15 +62,3 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-
-
-## добавить:
-
-поиск типа фильтрация по чему-то
-защита от неправильных действий пользователей
-вывод инфы из всех таблиц(которые не связующие), и возможность редактирования
-просмотр статистики всех пользователей у админа
-добавить кнопку убрать все товары из корзины
-автоматически убирать товары из корзины при совершении сделки
-
